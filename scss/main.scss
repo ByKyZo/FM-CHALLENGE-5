@@ -1,0 +1,143 @@
+// PRIMARY
+$Cyan: hsl(179, 62%, 43%);
+$BrightYellow: hsl(71, 73%, 54%);
+
+// NEUTRAL
+$LightGray: hsl(204, 43%, 93%);
+$GrayishBlue: hsl(218, 22%, 67%);
+
+$padding: 40px;
+
+$borderRadius: 12px;
+
+@mixin verticalCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: $LightGray;
+    @media (max-width: 645px){
+        height: 1000px;
+        align-items: unset;
+        padding: 50px 20px;
+    }
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Karla', sans-serif;
+}
+
+.attribution{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.card{
+    width: 640px;
+    height: 480px;
+    background-color: white;
+    border-radius: $borderRadius;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: white;
+    box-shadow: 4px 4px 25px rgba(0, 0, 0, .1);
+    &__header{
+        //grid-area: cardHeader;
+        padding: $padding;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        @include verticalCenter();
+        grid-column: 1 / 3;
+        &__title{
+            color: $Cyan;
+            margin-bottom: 25px;
+        }
+        &__subtitle{
+            color: $BrightYellow;
+            margin-bottom: 10px;
+        }
+        &__text{
+            color: $GrayishBlue;
+            line-height: 25px;
+        }
+    }
+    &__left{
+        //grid-area: cardleft;
+        grid-column: 1 / 2;
+        @media (max-width: 645px){
+            grid-column: 1 / 3;
+        }
+        background-color: $Cyan;
+        padding: $padding;
+        border-bottom-left-radius: $borderRadius;
+        @media (max-width: 645px){
+            border-radius: unset;
+        }
+        &__title{
+            margin-bottom: 30px;
+        }
+        .container__price{
+            line-height: 30px;
+            margin-bottom: 30px;
+        }
+        .price{
+            display: flex;
+            margin-bottom: 10px;
+        }
+        &__price{
+            font-size: 2.2rem;
+            margin-right: 10px;
+            font-weight: 700;
+        }
+        &__month{
+            opacity: 70%;
+        }
+        &__btn{
+            cursor: pointer;
+            padding: 17px;
+            border-radius: 5px;
+            border: none;
+            background-color: $BrightYellow;
+            color: white;
+            font-weight: 700;
+            box-shadow: 4px 4px 5px rgba(0, 0, 0, .1);
+            width: 100%;
+        }
+    }
+    &__right{
+        //grid-area: cardRight;
+        grid-column: 2 / 3;
+        @media (max-width: 645px){
+            grid-column: 1 / 3;
+        }
+        background-color: hsl(179, 61%, 52%);
+        padding: $padding;
+        border-bottom-right-radius: $borderRadius;
+        @media (max-width: 645px){
+            border-bottom-right-radius: $borderRadius;
+            border-bottom-left-radius: $borderRadius;
+        }
+        &__title{
+            margin-bottom: 20px;
+        }
+        &__text{
+            color: $LightGray;
+            line-height: 23px;
+        }
+    }
+}
